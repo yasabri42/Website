@@ -1,0 +1,11 @@
+# Ignore django cache
+src/django/*/__pycache__
+
+# Ignore credentials
+.env
+
+# Ignore postgresql database
+src/postgresql
+
+# Ignore SSL/TLS certificate
+src/nginx/certs
