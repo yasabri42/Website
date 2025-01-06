@@ -1,5 +1,8 @@
 # Ignore django cache
 src/django/*/__pycache__
+src/django/apps/*/__pycache__
+src/django/apps/*/migrations/*
+!src/django/apps/*/migrations/__init__.py
 
 # Ignore credentials
 .env
@@ -9,3 +12,6 @@ src/postgresql
 
 # Ignore SSL/TLS certificate
 src/nginx/certs
+
+# Ignore vault database
+src/vault/file

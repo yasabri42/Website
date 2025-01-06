@@ -22,9 +22,11 @@ services:
         - ./src/django:/django
     depends_on:
       - postgresql
+      - vault
     networks:
       - django_postgresql
       - django_nginx
+      - django_vault
 
   nginx:
     container_name: nginx
@@ -40,6 +42,21 @@ services:
     networks:
       - django_nginx
 
+  vault:
+    container_name: vault
+    build:
+      context: ./src/vault
+    environment:
+      VAULT_ADDR: ${VAULT_ADDR}
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - ./src/vault/config/vault.hcl:/vault/config/vault.hcl
+      - ./src/vault/file:/vault/file
+    networks:
+      - django_vault
+
 networks:
   django_postgresql:
   django_nginx:
+  django_vault:

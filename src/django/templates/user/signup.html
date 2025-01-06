@@ -1,0 +1,25 @@
+{% load static %}
+
+<head>
+    <title>Sign up</title>
+</head>
+
+{% block content %}
+<section class="title_section">
+    <h1>Sign up</h1>
+</section>
+
+<section class="user_form_section">
+    <form class="user_form" id="signup-form">
+        <label>Enter a username</label>
+        <input type="text" id="username" placeholder="Username" required>
+        <label>Enter an email address</label>
+        <input type="email" id="email" placeholder="Email" required>
+        <label>Enter a strong password</label>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Sign up</button>
+    </form>
+</section>
+{% endblock %}
+
+<script src="{% static 'js/signup.js' %}"></script>

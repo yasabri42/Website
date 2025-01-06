@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="icon" href="{% static 'images/favicon.ico' %}">
+        <link rel="stylesheet" href="{% static 'css/home.css' %}">
+        <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+        <link rel="stylesheet" href="{% static 'css/user_form.css' %}">
+        <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+        
+        <script src="https://unpkg.com/htmx.org"></script>
+        <script src="{% static 'js/global.js' %}"></script>
+        
+        <title>Home</title>
+    </head>
+    <body>
+        <header>
+            <nav class="navigation_bar">
+                <h1>MyWebsite</h1>            
+                <ul>
+                    <a id="home" href="#" hx-get="/" hx-target="#main-content" hx-push-url="true">Home</a>
+                    <a id="profile" href="#" hx-get="/profile" hx-target="#main-content" hx-push-url="true">Profile</a>
+                    <button id="login" href="#" hx-get="/login" hx-target="#main-content" hx-push-url="true">Log in</button>
+                    <button id="signup" href="#" hx-get="/signup" hx-target="#main-content" hx-push-url="true">Sign up</button>
+                    <button id="logout" href="#">Log out</button>
+                </ul>
+                <div class="hamburger">☰</div>
+            </nav>
+        </header>
+        
+        <div id="message-content"></div>
+
+        <div id="main-content">
+            {% include content_template %}
+        </div>
+
+        <footer></footer>
+    </body>
+
+    <script src="{% static 'js/navbar.js' %}"></script>
+    <script src="{% static 'js/logout.js' %}"></script>
+
+</html>

@@ -1,10 +1,10 @@
 #!/bin/sh
 
-echo "Waiting for PostgreSQL to be ready..."
+echo "Waiting for Django to be connected to Vault..."
 while true; do
-    PGPASSWORD=$POSTGRES_PASSWORD psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -d "$POSTGRES_DB" -U "$POSTGRES_USER" -c "SELECT 1;" 2>/dev/null 1>/dev/null
+    curl -s http://vault:8200/v1/sys/health | grep "initialized" > /dev/null
     if [ $? -eq 0 ]; then
-        echo "Connected to PostgreSQL database."
+        echo "Django is connected to Vault."
         break
     fi
     sleep 1
